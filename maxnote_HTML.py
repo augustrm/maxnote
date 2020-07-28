@@ -46,8 +46,30 @@ while loop == True:
 	_contact_info = input("\nContact Information?\n>>> ")+"\n"
 	_what = ">>> "+input("\nWhat?\n>>> ")
 	_what = fill(_what, subsequent_indent="\t")
-	note_text = "Note #"+str(note_number)+"\n"+"TimeStamp::"+ "["+str(datetime.now())+"]"+lineline+ _who + _when + _contact_info + _what +"\n\n"
-	HTML_note_text = "<h2 style=\"color:red\">Note #"+str(note_number)+"</h2>"+"TimeStamp::"+ "["+str(datetime.now())+"]"+HTML_lineline+ "<h3>"+_who +"</h3>" + _when+"<br><b>" + _contact_info+"</b><br><br>" + _what +"<br><br>"
+	note_text = "".join(["Note #",
+                             str(note_number),
+                             "\n"+"TimeStamp::",
+                             "["+str(datetime.now())+"]",
+                             lineline,
+                             _who,
+                             _when,
+                             _contact_info,
+                             _what,
+                             "\n\n"
+                             ])
+	HTML_note_text = "".join(["<h2 style=\"color:red\">Note #",
+                                  str(note_number),
+                                  "</h2>"+"TimeStamp::",
+                                  "["+str(datetime.now())+"]",
+                                  HTML_lineline,
+                                  "<h3>"+_who +"</h3>",
+                                  _when,
+                                  "<br><b>",
+                                  _contact_info,
+                                  "</b><br><br>",
+                                  _what,
+                                  "<br><br>"
+                                  ])
 	notelog.write(note_text)
 	HTML_nl.write(HTML_note_text)
 	hashstamp = blake2b()
